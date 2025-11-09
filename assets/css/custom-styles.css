@@ -6,19 +6,42 @@
 /* ===========================
    Decorative Background
    =========================== */
-body::before {
+html::before {
     content: '';
     position: fixed;
     top: -15%;
     right: -10%;
     width: 700px;
     height: 700px;
-    background: radial-gradient(circle at center, #fbbf24 0%, #10b981 40%, #14b8a6 65%, #000000 95%);
+    background: radial-gradient(circle at center, #fbbf24 0%, #10b981 40%, #14b8a6 60%, #000000 90%);
     opacity: 0.17;
     filter: blur(100px);
     transform: rotate(-25deg);
     pointer-events: none;
     z-index: -1;
+}
+
+/* Random dots on body */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle, rgba(16, 185, 129, 0.4) 2px, transparent 2px),
+        radial-gradient(circle, rgba(20, 184, 166, 0.35) 2px, transparent 2px),
+        radial-gradient(circle, rgba(251, 191, 36, 0.2) 3px, transparent 3px),
+        radial-gradient(circle, rgba(16, 185, 129, 0.25) 1.5px, transparent 1.5px),
+        radial-gradient(circle, rgba(20, 184, 166, 0.3) 2px, transparent 2px),
+        radial-gradient(circle, rgba(16, 185, 129, 0.2) 1px, transparent 1px),
+        radial-gradient(circle, rgba(251, 191, 36, 0.25) 2px, transparent 2px),
+        radial-gradient(circle, rgba(20, 184, 166, 0.2) 1.5px, transparent 1.5px);
+    background-size: 60px 60px, 75px 75px, 90px 90px, 45px 45px, 70px 70px, 50px 50px, 80px 80px, 55px 55px;
+    background-position: 0 0, 30px 30px, 15px 45px, 40px 8px, 55px 22px, 20px 50px, 45px 15px, 10px 35px;
+    mask-image: radial-gradient(ellipse 85% 115% at top right, black 25%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 115% at top right, black 25%, transparent 78%);
+    transform: translate(105px, 30px);
 }
 
 /* SVG Grid Pattern */
@@ -29,8 +52,8 @@ body::after {
     z-index: -1;
     pointer-events: none;
     background-image: 
-        repeating-linear-gradient(70deg, transparent, transparent 48px, rgba(255, 255, 255, 0.025) 48px, rgba(255, 255, 255, 0.025) 49px),
-        repeating-linear-gradient(160deg, transparent, transparent 48px, rgba(255, 255, 255, 0.025) 48px, rgba(255, 255, 255, 0.025) 49px);
+        repeating-linear-gradient(70deg, transparent, transparent 48px, rgba(255, 255, 255, 0.03) 48px, rgba(255, 255, 255, 0.03) 49px),
+        repeating-linear-gradient(160deg, transparent, transparent 48px, rgba(255, 255, 255, 0.03) 48px, rgba(255, 255, 255, 0.03) 49px);
     mask-image: radial-gradient(circle at top right, black 25%, transparent 55%);
     -webkit-mask-image: radial-gradient(circle at top right, black 25%, transparent 55%);
 }

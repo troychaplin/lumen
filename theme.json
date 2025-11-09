@@ -7,7 +7,7 @@
 			"palette": [
 				{
 					"slug": "charcoal-dark",
-					"color": "#0d0d0d",
+					"color": "#090909",
 					"name": "Charcoal Dark"
 				},
 				{
@@ -46,8 +46,8 @@
 					"name": "White 10%"
 				},
 				{
-					"slug": "black-90",
-					"color": "rgba(13, 13, 13, 0.7)",
+					"slug": "black-70",
+					"color": "rgba(10, 10, 10, 0.7)",
 					"name": "White 10%"
 				}
 			]
