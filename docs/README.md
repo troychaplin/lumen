@@ -1,361 +1,557 @@
-# TC Projects - WordPress Theme Documentation
+# TC Projects Theme - Implementation Plan
 
-This folder contains comprehensive step-by-step guides for building and customizing your WordPress block theme.
-
----
-
-## 📚 Documentation Guide
-
-### Start Here
-
-**[WP-QUICK-START.md](./WP-QUICK-START.md)** - Fastest way to get your theme running in WordPress  
-⏱️ Time: 10 minutes  
-📦 Get theme installed and see it live
+**Project:** Custom WordPress Block Theme from Figma Make Design  
+**Developer:** Troy Chaplin  
+**Purpose:** Personal portfolio site (projects.troychaplin.ca)  
+**Status:** Planning Phase  
+**Last Updated:** 2025-11-09
 
 ---
 
-### Step-by-Step Guides
+## Project Context
 
-Follow these in order for deep understanding and customization:
+### Source Materials
+- **Design Documentation:** Complete step-by-step guides in `/docs/` folder (created by Figma Make)
+- **Design Reference:** React app format (Figma designs converted to React)
+- **Implementation Guides:** 6-step process covering foundation to optional enhancements
 
-#### **Step 1: Foundation & Design System**
-**[WP-STEP-1-FOUNDATION.md](./WP-STEP-1-FOUNDATION.md)**  
-⏱️ Time: 15 minutes  
-📋 Learn: `style.css`, `theme.json`, `functions.php`, custom CSS  
-✅ Test: Dark background, fonts loading, grid pattern
-
----
-
-#### **Step 2: Header & Footer Template Parts**
-**[WP-STEP-2-HEADER-FOOTER.md](./WP-STEP-2-HEADER-FOOTER.md)**  
-⏱️ Time: 20 minutes  
-📋 Learn: Template parts, navigation, block markup syntax  
-✅ Test: Header with logo, footer with copyright
+### Development Environment
+- **Platform:** WordPress Studio (local development)
+- **Version Control:** Already connected to GitHub repository
+- **Theme Location:** `/wp-content/themes/tc-projects/`
+- **Deployment:** Will be deployed to live site after completion
 
 ---
 
-#### **Step 3: Homepage Template**
-**[WP-STEP-3-HOME-TEMPLATE.md](./WP-STEP-3-HOME-TEMPLATE.md)**  
-⏱️ Time: 30 minutes  
-📋 Learn: `front-page.html`, hero section, stats with gradient underlines  
-✅ Test: Complete homepage with hero and stats
+## Critical Decisions Made
+
+### 1. Font Loading Strategy
+**Decision:** Use WordPress Font Library (Site Editor)  
+**Method:** Load fonts via Appearance → Editor → Styles → Typography → Manage Fonts  
+**Fonts:**
+- Space Grotesk (weights: 400, 500, 600, 700) - Headings
+- Roboto Flex (weights: 300, 400, 500) - Body text
+
+**Implementation:** Reference in `theme.json` fontFace array, WordPress handles loading
 
 ---
 
-#### **Step 4: Block Patterns**
-**[WP-STEP-4-PATTERNS.md](./WP-STEP-4-PATTERNS.md)**  
-⏱️ Time: 45 minutes  
-📋 Learn: Creating patterns for featured projects, grids, skills  
-✅ Test: Insert patterns into pages
+### 2. Content Type for Projects
+**Decision:** Use regular WordPress Posts (not Custom Post Type)  
+**Rationale:** Simpler implementation, sufficient for personal portfolio  
+**Templates:**
+- Use `single.html` for individual projects
+- Use `archive.html` or `home.html` for projects listing
+- Utilize categories/tags for project organization
+
+**Note:** Can migrate to CPT later if needed
 
 ---
 
-#### **Step 5: Page Templates**
-**[WP-STEP-5-PAGE-TEMPLATES.md](./WP-STEP-5-PAGE-TEMPLATES.md)**  
-⏱️ Time: 30 minutes  
-📋 Learn: `page.html`, `single.html`, `blank.html`, template hierarchy  
-✅ Test: About page, blog posts, custom templates
+### 3. Development Workflow
+**Setup:** WordPress Studio (local) → GitHub → Production  
+**Current Status:** Theme folder structure exists, connected to Git  
+**Workflow:**
+1. Develop and test locally in WordPress Studio
+2. Commit changes to GitHub after each phase
+3. Deploy to production when complete
 
 ---
 
-#### **Step 6: Optional Enhancements**
-**[WP-STEP-6-OPTIONAL-ENHANCEMENTS.md](./WP-STEP-6-OPTIONAL-ENHANCEMENTS.md)**  
-⏱️ Time: 1-2 hours  
-📋 Learn: Custom post types, animations, SEO, performance  
-✅ Bonus: Advanced features and optimizations
+### 4. Scope - Phase 1 Only
+**Current Focus:** Steps 1-5 (Core theme functionality)  
+**Deferred:** Step 6 (Optional Enhancements) - review after core is complete  
+**Must-Have Features:**
+- Foundation (theme.json, functions.php, custom CSS)
+- Header & Footer template parts
+- Homepage template with hero and stats
+- Block patterns for content sections
+- Page templates for standard pages and posts
+
+**Nice-to-Have (Later):**
+- Custom Post Type for projects (if needed)
+- Advanced animations
+- Performance optimizations
+- SEO enhancements
+- Contact forms
 
 ---
 
-## 🎯 Choose Your Learning Path
+### 5. Blocks Strategy
+**Approach:** TBD - Need to determine core vs custom blocks  
+**Preference:** Use core blocks wherever possible  
+**Custom Blocks:** Only where core blocks cannot achieve design requirements
 
-### Path 1: "Just Make It Work" (Fastest)
-1. Read [WP-QUICK-START.md](./WP-QUICK-START.md)
-2. Install the theme from `/wordpress-theme/` folder
-3. Add content
-4. Done! ✅
-
-**Best for:** Getting live quickly, learning by doing
-
----
-
-### Path 2: "Understand Everything" (Thorough)
-1. Start with [WP-STEP-1-FOUNDATION.md](./WP-STEP-1-FOUNDATION.md)
-2. Work through Steps 2-5 in order
-3. Test each step before moving on
-4. Read Step 6 for advanced features
-
-**Best for:** Deep understanding, full customization control
+**To Discuss:**
+- Featured Project block (7-5 column layout with image) - Custom or Pattern?
+- Project grid cards - Query Loop or Custom?
+- Skills section - Columns pattern or Custom?
+- Stat items with gradient underlines - Custom block style or CSS class?
 
 ---
 
-### Path 3: "I Just Need to Fix/Change Something" (Targeted)
-- **Change colors?** → Step 1 (theme.json colors section)
-- **Edit header/footer?** → Step 2 (template parts)
-- **Modify homepage?** → Step 3 (front-page.html)
-- **Add project cards?** → Step 4 (block patterns)
-- **New page layouts?** → Step 5 (page templates)
-- **Custom post types?** → Step 6 (enhancements)
-
-**Best for:** Specific tasks, troubleshooting
+### 6. Content Strategy
+**Starting Point:** Build from scratch after theme completion  
+**No Migration:** No existing content to import  
+**Content Types Needed:**
+- Homepage content (hero text, stats)
+- About page
+- Project posts (with featured images, descriptions, tech stack)
+- Navigation menu
 
 ---
 
-## 📁 What's in `/wordpress-theme/`?
+## Design System Reference
 
-The actual, ready-to-use WordPress theme files:
-
+### Color Palette
 ```
-wordpress-theme/
-├── style.css           ← Theme metadata
-├── theme.json          ← Design system (YOUR DESIGN TOKENS)
-├── functions.php       ← PHP functionality
-├── README.txt          ← WordPress theme readme
-│
-├── assets/css/
-│   └── custom-styles.css  ← Grid backgrounds, utilities
-│
-├── parts/
-│   ├── header.html     ← Site header
-│   └── footer.html     ← Site footer
-│
-└── templates/
-    ├── index.html      ← Fallback
-    ├── front-page.html ← Homepage
-    ├── page.html       ← Standard pages
-    ├── single.html     ← Blog posts
-    └── blank.html      ← Minimal template
+Primary (Emerald):     #10b981
+Accent (Teal):         #14b8a6
+Background (Dark):     #1a1a1a
+Surface (Charcoal):    #262626
+Text (White):          #ffffff
+Text Muted (Gray):     #9ca3af
 ```
 
-**To use:** Zip this folder and upload to WordPress
+### Typography
+```
+Body Font:     Roboto Flex (weight 300)
+Heading Font:  Space Grotesk (weights 400-700)
 
----
-
-## 🎨 Design System Reference
-
-Your theme uses these design tokens (from `theme.json`):
-
-### Colors
-- **Charcoal Dark** - `#1a1a1a` (main background)
-- **Charcoal** - `#262626` (card backgrounds)
-- **Emerald** - `#10b981` (primary accent)
-- **Teal** - `#14b8a6` (secondary accent)
-- **White** - `#ffffff` (text)
-- **Gray 400** - `#9ca3af` (secondary text)
-
-### Fonts
-- **Body** - Roboto Flex (weight 300)
-- **Headings** - Space Grotesk (weight 600-700)
+Font Sizes:
+- sm:   0.875rem
+- base: 1rem
+- xl:   1.25rem
+- 2xl:  1.5rem
+- 3xl:  1.875rem
+- 4xl:  2.25rem
+- 5xl:  3rem
+- 6xl:  3.75rem
+- 7xl:  4.5rem (hero text)
+```
 
 ### Spacing Scale
-- **xs** - 0.5rem (8px)
-- **sm** - 1rem (16px)
-- **md** - 1.5rem (24px)
-- **lg** - 2rem (32px)
-- **xl** - 3rem (48px)
-- **2xl** - 4rem (64px)
-- **3xl** - 6rem (96px)
-
-### Font Sizes
-- **sm** - 0.875rem
-- **base** - 1rem
-- **xl** - 1.25rem
-- **2xl** - 1.5rem
-- **3xl** - 1.875rem
-- **4xl** - 2.25rem
-- **5xl** - 3rem
-- **6xl** - 3.75rem
-- **7xl** - 4.5rem (hero text)
-
----
-
-## 🔧 Common Customizations
-
-### Change Primary Color
-Edit `/wordpress-theme/theme.json`:
-```json
-{
-  "slug": "emerald",
-  "color": "#YOUR_COLOR_HERE"
-}
+```
+xs:  0.5rem  (8px)
+sm:  1rem    (16px)
+md:  1.5rem  (24px)
+lg:  2rem    (32px)
+xl:  3rem    (48px)
+2xl: 4rem    (64px)
+3xl: 6rem    (96px)
 ```
 
-### Change Fonts
-Edit `/wordpress-theme/theme.json` fonts section:
-```json
-"fontFace": [{
-  "src": ["https://fonts.googleapis.com/css2?family=Your+Font..."]
-}]
+### Key Design Features
+- Dark theme with emerald green accents
+- SVG grid background pattern (subtle, semi-transparent)
+- Gradient underlines on stats (emerald to teal)
+- Card backgrounds at 70% opacity
+- Asymmetric layouts
+- Hover effects and transitions
+- Clean, modern aesthetic
+
+---
+
+## Implementation Phases
+
+### Phase 1: Foundation (Step 1) ⏳ NOT STARTED
+**Priority:** CRITICAL - Must be completed first  
+**Estimated Time:** 2-3 hours
+
+**Files to Create/Update:**
+
+1. **`style.css`** ✅ EXISTS (needs expansion)
+   - Expand theme metadata
+   - Add tags, tested versions, license info
+
+2. **`theme.json`** ❌ EMPTY (critical)
+   - Complete color palette
+   - Font families and sizes
+   - Spacing scale
+   - Global styles
+   - Element styles (h1-h6, links, buttons)
+   - Layout settings
+
+3. **`functions.php`** ❌ EMPTY (critical)
+   - Enqueue custom styles
+   - Register block pattern category
+   - Register custom block styles (gradient-underline, card variants)
+
+4. **`assets/css/custom-styles.css`** ❌ DOESN'T EXIST
+   - SVG grid background pattern
+   - Gradient underlines
+   - Card backgrounds
+   - Hover effects
+   - Utility classes
+
+**Testing Checkpoint:**
+- [ ] Theme activates without errors
+- [ ] Dark background (#1a1a1a) visible
+- [ ] Fonts load from Font Library
+- [ ] Grid background pattern visible
+- [ ] No console errors
+
+---
+
+### Phase 2: Template Parts (Step 2) ⏳ NOT STARTED
+**Priority:** HIGH  
+**Estimated Time:** 1-2 hours
+
+**Files to Create:**
+
+1. **`parts/header.html`** ✅ EXISTS (empty)
+   - "Troy Chaplin Portfolio" branding
+   - Navigation menu
+   - Flex layout (space-between)
+   - Responsive mobile menu
+
+2. **`parts/footer.html`** ✅ EXISTS (empty)
+   - Copyright with dynamic year
+   - Centered layout
+   - Subtle top border
+
+**Testing Checkpoint:**
+- [ ] Header appears on all pages
+- [ ] "Portfolio" text is emerald green
+- [ ] Navigation menu works
+- [ ] Footer appears on all pages
+- [ ] Responsive on mobile
+
+---
+
+### Phase 3: Homepage Template (Step 3) ⏳ NOT STARTED
+**Priority:** HIGH  
+**Estimated Time:** 2-3 hours
+
+**Files to Create/Update:**
+
+1. **`templates/front-page.html`** ❌ DOESN'T EXIST
+   - Hero section with large heading
+   - Subtitle text
+   - Stats section (3 columns)
+   - Gradient underlines on stats
+   - Grid background
+
+2. **`templates/index.html`** ✅ EXISTS (empty)
+   - Basic fallback template
+   - Header, post content, footer
+
+**Testing Checkpoint:**
+- [ ] Homepage uses front-page.html
+- [ ] Hero text displays correctly
+- [ ] Stats show with gradient underlines
+- [ ] Grid background visible
+- [ ] Responsive layout works
+
+---
+
+### Phase 4: Block Patterns (Step 4) ⏳ NOT STARTED
+**Priority:** MEDIUM  
+**Estimated Time:** 3-4 hours
+
+**Files to Create:**
+
+1. **`patterns/featured-project.php`** ❌ DOESN'T EXIST
+   - 7-5 column layout
+   - Image on left, content on right
+   - Project details, tech stack
+   - CTA button
+
+2. **`patterns/project-grid.php`** ❌ DOESN'T EXIST
+   - 3-column grid
+   - Card layout with images
+   - Hover effects
+
+3. **`patterns/skills-grid.php`** ❌ DOESN'T EXIST
+   - 3-column skills display
+   - Card backgrounds
+   - Emerald headings
+
+**Testing Checkpoint:**
+- [ ] Patterns appear in Patterns inserter
+- [ ] TC Projects category visible
+- [ ] Patterns insert correctly
+- [ ] Content is editable after insertion
+- [ ] Images can be added/replaced
+
+---
+
+### Phase 5: Page Templates (Step 5) ⏳ NOT STARTED
+**Priority:** MEDIUM  
+**Estimated Time:** 2-3 hours
+
+**Files to Create:**
+
+1. **`templates/page.html`** ❌ DOESN'T EXIST
+   - Standard page template
+   - Centered title
+   - Wide content area
+
+2. **`templates/single.html`** ❌ DOESN'T EXIST
+   - Individual project/post template
+   - Featured image
+   - Post meta (date, author optional)
+   - Content area
+
+3. **`templates/blank.html`** ❌ DOESN'T EXIST
+   - Minimal template
+   - No header/footer
+   - Full-width content
+
+4. **`templates/archive.html`** ❌ DOESN'T EXIST (optional)
+   - Projects listing
+   - 3-column grid
+   - Query loop for posts
+   - Pagination
+
+**Testing Checkpoint:**
+- [ ] About page uses page.html
+- [ ] Individual posts use single.html
+- [ ] Blank template available in editor
+- [ ] Archive shows all projects
+- [ ] Template hierarchy works correctly
+
+---
+
+### Phase 6: Optional Enhancements (Step 6) 🔄 DEFERRED
+**Priority:** LOW (for later review)  
+**Estimated Time:** TBD
+
+**Potential Features to Review Later:**
+- Dynamic copyright year (PHP in footer)
+- Custom Post Type for projects (if needed)
+- Advanced block styles
+- Page transitions and animations
+- Performance optimizations
+- SEO schema markup
+- Contact form pattern
+- Analytics integration
+
+**Decision:** Will review and prioritize after Phases 1-5 are complete
+
+---
+
+## Block Strategy Discussion
+
+### Questions to Address:
+
+**1. Featured Project Section**
+- **Current Plan:** Pattern in `/patterns/featured-project.php`
+- **Question:** Should this be a custom block instead?
+- **Considerations:**
+  - Pattern = easier to implement, fully editable after insertion
+  - Custom block = more control, reusable, can have custom UI
+  - Design: 7-5 column layout with single image and content card
+
+**2. Project Grid Cards**
+- **Options:**
+  - A) Use Query Loop block (core) with custom CSS
+  - B) Create custom block for individual project cards
+  - C) Use pattern with manual content
+- **Question:** Which approach for project listings?
+
+**3. Skills Section**
+- **Options:**
+  - A) Columns block (core) with Groups for cards
+  - B) Custom skills grid block
+  - C) Pattern (as currently planned)
+- **Question:** Pattern sufficient, or need custom block?
+
+**4. Stat Items with Gradient Underlines**
+- **Options:**
+  - A) Paragraph with custom CSS class (`.gradient-underline`)
+  - B) Custom block style for Paragraph block
+  - C) Custom stat block component
+- **Question:** Which approach best balances flexibility and design control?
+
+**5. Card Backgrounds and Hover Effects**
+- **Current Plan:** CSS utility classes (`.card-bg-charcoal`, `.hover-lift`)
+- **Question:** Sufficient, or need custom blocks?
+
+**6. Navigation and Header**
+- **Plan:** Use core Navigation block
+- **Question:** Any special requirements needing custom implementation?
+
+### Recommendation Needed:
+**Should we map out the blocks strategy now, or implement Phases 1-3 first and then evaluate?**
+
+**Pros of Deciding Now:**
+- Clear roadmap before coding
+- Can plan custom blocks in parallel
+- Understand full scope
+
+**Pros of Deciding After Phase 3:**
+- See how core blocks work with our design
+- Make informed decisions based on real implementation
+- Potentially avoid unnecessary custom blocks
+
+---
+
+## File Structure Status
+
+```
+tc-projects/
+├── _plans/
+│   └── README.md ...................... ✅ THIS FILE
+├── assets/
+│   └── css/ ........................... ❌ EMPTY (needs custom-styles.css)
+├── blocks/
+│   └── .gitignore ..................... ✅ EXISTS (empty folder ready)
+├── docs/ .............................. ✅ COMPLETE (Figma Make guides)
+│   ├── README.md
+│   ├── WORDPRESS-IMPLEMENTATION-PLAN.md
+│   ├── WP-QUICK-START.md
+│   ├── WP-STEP-1-FOUNDATION.md
+│   ├── WP-STEP-2-HEADER-FOOTER.md
+│   ├── WP-STEP-3-HOME-TEMPLATE.md
+│   ├── WP-STEP-4-PATTERNS.md
+│   ├── WP-STEP-5-PAGE-TEMPLATES.md
+│   └── WP-STEP-6-OPTIONAL-ENHANCEMENTS.md
+├── parts/
+│   ├── footer.html .................... ✅ EXISTS (empty)
+│   └── header.html .................... ✅ EXISTS (empty)
+├── patterns/ .......................... ❌ EMPTY (needs 3 pattern files)
+├── templates/
+│   └── index.html ..................... ✅ EXISTS (empty)
+├── functions.php ...................... ✅ EXISTS (empty)
+├── README.md .......................... ✅ EXISTS
+├── style.css .......................... ✅ EXISTS (minimal)
+└── theme.json ......................... ✅ EXISTS (empty)
 ```
 
-### Modify Homepage
-Edit `/wordpress-theme/templates/front-page.html`
-
-### Edit Header/Footer
-Edit `/wordpress-theme/parts/header.html` or `footer.html`
-
-### Add Custom CSS
-Edit `/wordpress-theme/assets/css/custom-styles.css`
+**Summary:**
+- Structure exists ✅
+- Core files empty ❌
+- Ready for implementation 🚀
 
 ---
 
-## 🐛 Troubleshooting
+## Risk Assessment
 
-Each guide has a "Common Issues" section at the end. Quick checks:
+### Low Risk
+- Foundation implementation (well-documented in guides)
+- Template parts (straightforward HTML/block markup)
+- Basic page templates (standard WordPress)
 
-1. **Nothing showing?** - Check file paths and names
-2. **Fonts not loading?** - Check Google Fonts URL in theme.json
-3. **Styles not applying?** - Clear cache (WordPress + browser)
-4. **Grid background missing?** - Verify `has-grid-background` class
-5. **Template not working?** - Check template hierarchy order
+### Medium Risk
+- Grid background pattern (CSS complexity)
+- Gradient underlines (needs testing across browsers)
+- Font loading via Font Library (newer WordPress feature)
+- Responsive layouts (needs thorough testing)
 
-**Detailed troubleshooting in each step guide**
+### High Risk
+- None identified at this stage
 
----
-
-## 📖 WordPress Block Theme Concepts
-
-### What's a Block Theme?
-Modern WordPress themes built entirely with blocks. No PHP templates for content rendering (unlike classic themes).
-
-### Key Files
-
-**style.css** - Theme metadata (name, author, etc.)  
-**theme.json** - Design system and global settings  
-**functions.php** - PHP functionality (enqueue styles, register features)  
-**templates/** - Page structure (HTML with block markup)  
-**parts/** - Reusable sections (header, footer)  
-**patterns/** - Pre-designed content blocks  
-
-### Block Markup Syntax
-
-WordPress uses HTML comments with JSON attributes:
-
-```html
-<!-- wp:paragraph {"textColor":"emerald","fontSize":"xl"} -->
-<p class="has-emerald-color has-text-color has-xl-font-size">Text</p>
-<!-- /wp:paragraph -->
-```
-
-**Self-closing blocks:**
-```html
-<!-- wp:post-title {"level":1} /-->
-```
-
-**Nested blocks:**
-```html
-<!-- wp:group {"backgroundColor":"charcoal"} -->
-<div class="wp-block-group has-charcoal-background-color">
-    <!-- wp:paragraph -->
-    <p>Nested content</p>
-    <!-- /wp:paragraph -->
-</div>
-<!-- /wp:group -->
-```
-
-More details in Step 2 guide.
+### Mitigation Strategies
+- Test incrementally after each phase
+- Use browser DevTools for debugging
+- Reference documentation at each step
+- Commit to Git after each working milestone
+- Test in multiple browsers (Chrome, Firefox, Safari)
 
 ---
 
-## 🚀 Workflow Recommendations
+## Testing Strategy
 
-### Development Workflow
+### After Each Phase
+1. Clear WordPress cache
+2. Clear browser cache (Cmd+Shift+R)
+3. Inspect elements with DevTools
+4. Check browser console for errors
+5. Test responsive (mobile/tablet/desktop)
+6. Verify in Firefox and Safari (not just Chrome)
 
-1. **Make changes** to files in `/wordpress-theme/`
-2. **Re-zip** the theme folder
-3. **Re-upload** to WordPress (or use FTP/SFTP)
-4. **Test** in WordPress
-5. **Clear caches** if needed
+### Before Moving to Next Phase
+- All checkboxes in phase must be ✅
+- No console errors
+- Visual design matches documentation
+- Responsive layouts work correctly
 
-### Alternative: Edit in Site Editor
-
-WordPress lets you edit templates visually:
-- Appearance → Editor → Templates
-- Changes save to database (not files)
-- Can export changes back to theme files
-
-**Pro tip:** Develop in files for version control, refine in Site Editor if needed
-
----
-
-## 📚 External Resources
-
-**WordPress Official:**
-- [Block Theme Handbook](https://developer.wordpress.org/themes/block-themes/)
-- [theme.json Reference](https://developer.wordpress.org/themes/advanced-topics/theme-json/)
-- [Template Hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/)
-
-**Your Project:**
-- React prototype (in this project root) - Visual reference
-- `WORDPRESS-IMPLEMENTATION-PLAN.md` - Original conversion plan
-- These step-by-step guides - Detailed instructions
+### Final Testing (Before Production)
+- [ ] Lighthouse audit (target 90+ all metrics)
+- [ ] WAVE accessibility check
+- [ ] Cross-browser testing (Chrome, Firefox, Safari)
+- [ ] Cross-device testing (phone, tablet, desktop)
+- [ ] Link checker (no broken links)
+- [ ] Image optimization
+- [ ] Performance baseline established
 
 ---
 
-## ✅ Getting Started Checklist
+## Git Workflow
 
-- [ ] Read WP-QUICK-START.md
-- [ ] Zip `/wordpress-theme/` folder
-- [ ] Upload to WordPress
-- [ ] Activate theme
-- [ ] Set static front page
-- [ ] Create navigation menu
-- [ ] View homepage (should show hero + stats)
-- [ ] Create About page
-- [ ] Test responsive design
-- [ ] Add your content
-- [ ] Celebrate! 🎉
+### Branch Strategy
+- `main` - production-ready code
+- `develop` - active development
+- `feature/*` - individual features (optional for solo dev)
 
----
+### Commit Strategy
+- Commit after each phase completion
+- Meaningful commit messages
+- Tag releases (v1.0.0, v1.1.0, etc.)
 
-## 💡 Tips for Success
-
-1. **Test after each step** - Don't move forward if previous step isn't working
-2. **Clear caches often** - Browser cache and WordPress cache
-3. **Use browser DevTools** - Inspect elements, check console for errors
-4. **Keep backups** - Version control or backup before major changes
-5. **Read error messages** - WordPress debug log is your friend
-6. **One change at a time** - Easier to identify what broke
-7. **Reference the React prototype** - Visual guide for design intent
+### Suggested Commits
+1. "Phase 1: Foundation - theme.json, functions.php, custom CSS"
+2. "Phase 2: Template parts - header and footer"
+3. "Phase 3: Homepage template with hero and stats"
+4. "Phase 4: Block patterns - featured project, grids"
+5. "Phase 5: Page templates - page, single, blank, archive"
+6. "Phase 6: Optional enhancements" (if implemented)
 
 ---
 
-## 🎓 Learning Resources by Topic
+## Next Steps - DECISION NEEDED
 
-**Understanding theme.json:**
-- Step 1 guide (comprehensive breakdown)
-- [WordPress theme.json docs](https://developer.wordpress.org/themes/advanced-topics/theme-json/)
+### Option A: Discuss Blocks Strategy Now
+**Approach:** Map out all core vs custom blocks before starting Phase 1  
+**Timeline:** 30-60 min discussion, then start Phase 1  
+**Pros:** Complete roadmap, understand full scope  
+**Cons:** Might over-plan, decisions may change during implementation
 
-**Block markup syntax:**
-- Step 2 guide (examples and explanations)
-- [Block Markup Language](https://developer.wordpress.org/block-editor/explanations/architecture/key-concepts/#blocks)
+### Option B: Implement Phases 1-3, Then Discuss Blocks
+**Approach:** Get foundation working, see how core blocks perform, then decide  
+**Timeline:** Start Phase 1 immediately, discuss blocks after Phase 3  
+**Pros:** Informed decisions based on real implementation, avoid premature optimization  
+**Cons:** Might need to refactor if custom blocks needed
 
-**Template hierarchy:**
-- Step 5 guide (when each template is used)
-- [Template Hierarchy diagram](https://developer.wordpress.org/themes/basics/template-hierarchy/)
+### Recommendation: **Option B**
 
-**Block patterns:**
-- Step 4 guide (create custom patterns)
-- [Block Pattern directory](https://wordpress.org/patterns/)
+**Rationale:**
+1. Foundation (Phase 1-3) is independent of block decisions
+2. Can evaluate core blocks in practice before committing to custom
+3. Faster time to visible progress
+4. Patterns can always be converted to custom blocks later
+5. Theme will be functional sooner for testing
 
-**Custom post types:**
-- Step 6 guide (projects CPT example)
-- [register_post_type() reference](https://developer.wordpress.org/reference/functions/register_post_type/)
-
----
-
-## 🏆 You've Got This!
-
-This documentation is designed to take you from zero to a fully functional, custom WordPress block theme. Whether you zip through the Quick Start or dive deep into each step, you'll end up with:
-
-✅ A production-ready WordPress theme  
-✅ Complete understanding of how it works  
-✅ Ability to customize every aspect  
-✅ A portfolio site you can be proud of  
-
-**Start with [WP-QUICK-START.md](./WP-QUICK-START.md) and let's build something great!**
+**Proposed Timeline:**
+1. **Now:** Start Phase 1 (Foundation) - 2-3 hours
+2. **Next:** Phase 2 (Template Parts) - 1-2 hours
+3. **Then:** Phase 3 (Homepage) - 2-3 hours
+4. **After Phase 3:** Review and decide block strategy for Phase 4
 
 ---
 
-Questions? Each guide has troubleshooting sections and common issues documented.
+## Questions for Immediate Next Steps
 
-Happy building! 🚀
+1. **Do you agree with Option B (implement foundation first, discuss blocks later)?**
+
+2. **Are you ready to start Phase 1 (Foundation) now?**
+
+3. **Any other decisions or clarifications needed before we begin?**
+
+---
+
+## Notes & References
+
+- All implementation steps documented in `/docs/` folder
+- Reference `WP-STEP-*.md` files for detailed code examples
+- Design tokens are authoritative (colors, fonts, spacing)
+- WordPress Studio provides local development environment
+- Theme will be deployed to projects.troychaplin.ca when complete
+
+---
+
+**Status:** Awaiting decision on next steps  
+**Ready to Start:** Phase 1 - Foundation  
+**Estimated Time to Completion:** 12-15 hours (Phases 1-5)
+

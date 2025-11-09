@@ -2,12 +2,11 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"settings": {
-        "appearanceTools": true,
 		"color": {
 			"palette": [
 				{
 					"slug": "charcoal-dark",
-					"color": "#0d0d0d",
+					"color": "#1a1a1a",
 					"name": "Charcoal Dark"
 				},
 				{
@@ -43,11 +42,6 @@
 				{
 					"slug": "white-10",
 					"color": "rgba(255, 255, 255, 0.1)",
-					"name": "White 10%"
-				},
-				{
-					"slug": "black-90",
-					"color": "rgba(13, 13, 13, 0.7)",
 					"name": "White 10%"
 				}
 			]
@@ -243,8 +237,8 @@
 			]
 		},
 		"layout": {
-			"contentSize": "672px",
-			"wideSize": "976px"
+			"contentSize": "976px",
+			"wideSize": "1152px"
 		}
 	},
 	"styles": {
