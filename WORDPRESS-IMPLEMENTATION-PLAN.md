@@ -1,6 +1,7 @@
 # WordPress Block Theme Implementation Plan
-
 ## TC Projects Theme
+
+---
 
 ## Table of Contents
 1. [Theme Overview](#theme-overview)
@@ -15,7 +16,7 @@
 
 ## Theme Overview
 
-**Theme Name:** TC Projects
+**Theme Name:** TC Projects  
 **Type:** Block Theme  
 **WordPress Version:** 6.4+  
 **PHP Version:** 7.4+
@@ -32,7 +33,7 @@
 - **Homepage (Front Page):** Custom front-page.html template
 - **About Page:** Default page.html template
 - **Projects (Blog Posts):** Default single.html template
-- **Projects Archive:** Default index.html template
+- **Projects Archive:** Default home.html template
 
 ---
 
@@ -334,7 +335,7 @@ Text Domain: tc-projects
 ```php
 <?php
 /**
- * Troy Chaplin Portfolio Theme Functions
+ * TC Projects Theme Functions
  */
 
 if (!defined('ABSPATH')) {
@@ -372,8 +373,8 @@ add_action('wp_enqueue_scripts', 'tcp_enqueue_custom_styles');
  */
 function tcp_register_block_patterns_category() {
     register_block_pattern_category(
-        'tcp-portfolio',
-        array('label' => __('Portfolio Sections', 'tc-projects'))
+        'tc-projects',
+        array('label' => __('TC Projects', 'tc-projects'))
     );
 }
 add_action('init', 'tcp_register_block_patterns_category');
@@ -416,7 +417,7 @@ add_action('init', 'tcp_register_block_styles');
 
 ```css
 /**
- * Custom Styles for Troy Chaplin Portfolio
+ * Custom Styles for TC Projects
  */
 
 /* ===========================
@@ -935,64 +936,76 @@ body.page-template-default .wp-site-blocks::before {
 /**
  * Title: Hero Stats Section
  * Slug: tcp/hero-stats
- * Categories: tcp-portfolio
- * Description: Three-column stats section with gradient underlines
+ * Categories: tc-projects
+ * Description: Hero intro with stats featuring gradient underlines
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"6rem","bottom":"6rem","left":"1.5rem","right":"1.5rem"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-top:6rem;padding-right:1.5rem;padding-bottom:6rem;padding-left:1.5rem">
-    <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"3rem","left":"3rem"}}}} -->
-    <div class="wp-block-columns alignwide">
-        <!-- wp:column -->
-        <div class="wp-block-column">
-            <!-- wp:group {"className":"is-style-stat-item"} -->
-            <div class="wp-block-group is-style-stat-item">
-                <!-- wp:heading {"level":2} -->
-                <h2 class="wp-block-heading">50+</h2>
-                <!-- /wp:heading -->
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"10rem","bottom":"5rem","left":"1.5rem","right":"1.5rem"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-top:10rem;padding-right:1.5rem;padding-bottom:5rem;padding-left:1.5rem">
+    <!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"4rem"}}} -->
+    <div class="wp-block-group alignwide" style="display:flex;flex-direction:column;gap:4rem">
+        
+        <!-- Hero Text -->
+        <!-- wp:group {"style":{"spacing":{"blockGap":"1.5rem"}}} -->
+        <div class="wp-block-group">
+            <!-- wp:heading {"level":1,"fontSize":"huge"} -->
+            <h1 class="wp-block-heading has-huge-font-size">Creative<br><span style="color:#10b981">Developer &</span><br>Designer</h1>
+            <!-- /wp:heading -->
 
-                <!-- wp:paragraph -->
-                <p>Projects Completed</p>
-                <!-- /wp:paragraph -->
-            </div>
-            <!-- /wp:group -->
+            <!-- wp:paragraph {"style":{"typography":{"fontSize":"1.5rem"}},"textColor":"gray-400"} -->
+            <p class="has-gray-400-color has-text-color" style="font-size:1.5rem">Crafting digital experiences through code and design. Specializing in WordPress, web development, and modern design systems.</p>
+            <!-- /wp:paragraph -->
         </div>
-        <!-- /wp:column -->
+        <!-- /wp:group -->
 
-        <!-- wp:column -->
-        <div class="wp-block-column">
-            <!-- wp:group {"className":"is-style-stat-item"} -->
-            <div class="wp-block-group is-style-stat-item">
-                <!-- wp:heading {"level":2} -->
-                <h2 class="wp-block-heading">10+</h2>
-                <!-- /wp:heading -->
+        <!-- Stats Grid -->
+        <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"0.25rem"}}} -->
+        <div class="wp-block-columns alignwide">
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:group {"className":"is-style-stat-item"} -->
+                <div class="wp-block-group is-style-stat-item">
+                    <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"bottom"}} -->
+                    <div class="wp-block-group">
+                        <!-- wp:heading {"level":2,"textColor":"primary","fontSize":"huge"} -->
+                        <h2 class="wp-block-heading has-primary-color has-text-color has-huge-font-size">12</h2>
+                        <!-- /wp:heading -->
 
-                <!-- wp:paragraph -->
-                <p>Years Experience</p>
-                <!-- /wp:paragraph -->
+                        <!-- wp:paragraph {"fontSize":"small","textColor":"gray-400"} -->
+                        <p class="has-gray-400-color has-text-color has-small-font-size">Selected Projects</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:group -->
             </div>
-            <!-- /wp:group -->
-        </div>
-        <!-- /wp:column -->
+            <!-- /wp:column -->
 
-        <!-- wp:column -->
-        <div class="wp-block-column">
-            <!-- wp:group {"className":"is-style-stat-item"} -->
-            <div class="wp-block-group is-style-stat-item">
-                <!-- wp:heading {"level":2} -->
-                <h2 class="wp-block-heading">30+</h2>
-                <!-- /wp:heading -->
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:group {"className":"is-style-stat-item"} -->
+                <div class="wp-block-group is-style-stat-item">
+                    <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"bottom"}} -->
+                    <div class="wp-block-group">
+                        <!-- wp:heading {"level":2,"textColor":"primary","fontSize":"huge"} -->
+                        <h2 class="wp-block-heading has-primary-color has-text-color has-huge-font-size">20+</h2>
+                        <!-- /wp:heading -->
 
-                <!-- wp:paragraph -->
-                <p>Happy Clients</p>
-                <!-- /wp:paragraph -->
+                        <!-- wp:paragraph {"fontSize":"small","textColor":"gray-400"} -->
+                        <p class="has-gray-400-color has-text-color has-small-font-size">Years Experience</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:group -->
             </div>
-            <!-- /wp:group -->
+            <!-- /wp:column -->
         </div>
-        <!-- /wp:column -->
+        <!-- /wp:columns -->
+
     </div>
-    <!-- /wp:columns -->
+    <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 ```
@@ -1003,68 +1016,72 @@ body.page-template-default .wp-site-blocks::before {
 /**
  * Title: Skills Section
  * Slug: tcp/skills-section
- * Categories: tcp-portfolio
+ * Categories: tc-projects
  * Description: Grid of skill cards with hover effects
  */
 ?>
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"4rem","bottom":"4rem","left":"1.5rem","right":"1.5rem"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:4rem;padding-right:1.5rem;padding-bottom:4rem;padding-left:1.5rem">
-    <!-- wp:heading {"align":"wide","fontSize":"xx-large"} -->
-    <h2 class="wp-block-heading alignwide has-xx-large-font-size">Design</h2>
-    <!-- /wp:heading -->
+    <!-- wp:group {"align":"wide"} -->
+    <div class="wp-block-group alignwide">
+        <!-- wp:heading {"fontSize":"xx-large"} -->
+        <h2 class="wp-block-heading has-xx-large-font-size">What I Do</h2>
+        <!-- /wp:heading -->
 
-    <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"2rem","left":"2rem"},"margin":{"top":"2rem"}}}} -->
-    <div class="wp-block-columns alignwide" style="margin-top:2rem">
-        <!-- wp:column -->
-        <div class="wp-block-column">
-            <!-- wp:group {"className":"is-style-skill-card"} -->
-            <div class="wp-block-group is-style-skill-card">
-                <!-- wp:heading {"level":3,"fontSize":"large"} -->
-                <h3 class="wp-block-heading has-large-font-size">User Research</h3>
-                <!-- /wp:heading -->
+        <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"2rem","margin":{"top":"3rem"}}}} -->
+        <div class="wp-block-columns alignwide" style="margin-top:3rem">
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:group {"className":"is-style-skill-card"} -->
+                <div class="wp-block-group is-style-skill-card">
+                    <!-- wp:heading {"level":3} -->
+                    <h3 class="wp-block-heading">WordPress Development</h3>
+                    <!-- /wp:heading -->
 
-                <!-- wp:paragraph -->
-                <p>Understanding user needs through interviews, surveys, and usability testing.</p>
-                <!-- /wp:paragraph -->
+                    <!-- wp:paragraph -->
+                    <p>Custom themes and plugins built with modern development practices and best coding standards.</p>
+                    <!-- /wp:paragraph -->
+                </div>
+                <!-- /wp:group -->
             </div>
-            <!-- /wp:group -->
-        </div>
-        <!-- /wp:column -->
+            <!-- /wp:column -->
 
-        <!-- wp:column -->
-        <div class="wp-block-column">
-            <!-- wp:group {"className":"is-style-skill-card"} -->
-            <div class="wp-block-group is-style-skill-card">
-                <!-- wp:heading {"level":3,"fontSize":"large"} -->
-                <h3 class="wp-block-heading has-large-font-size">UI/UX Design</h3>
-                <!-- /wp:heading -->
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:group {"className":"is-style-skill-card"} -->
+                <div class="wp-block-group is-style-skill-card">
+                    <!-- wp:heading {"level":3} -->
+                    <h3 class="wp-block-heading">UI/UX Design</h3>
+                    <!-- /wp:heading -->
 
-                <!-- wp:paragraph -->
-                <p>Creating intuitive and beautiful interfaces that users love.</p>
-                <!-- /wp:paragraph -->
+                    <!-- wp:paragraph -->
+                    <p>Creating intuitive user experiences with beautiful, accessible interfaces that users love.</p>
+                    <!-- /wp:paragraph -->
+                </div>
+                <!-- /wp:group -->
             </div>
-            <!-- /wp:group -->
-        </div>
-        <!-- /wp:column -->
+            <!-- /wp:column -->
 
-        <!-- wp:column -->
-        <div class="wp-block-column">
-            <!-- wp:group {"className":"is-style-skill-card"} -->
-            <div class="wp-block-group is-style-skill-card">
-                <!-- wp:heading {"level":3,"fontSize":"large"} -->
-                <h3 class="wp-block-heading has-large-font-size">Prototyping</h3>
-                <!-- /wp:heading -->
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:group {"className":"is-style-skill-card"} -->
+                <div class="wp-block-group is-style-skill-card">
+                    <!-- wp:heading {"level":3} -->
+                    <h3 class="wp-block-heading">Rapid Prototyping</h3>
+                    <!-- /wp:heading -->
 
-                <!-- wp:paragraph -->
-                <p>Building interactive prototypes to test and validate design decisions.</p>
-                <!-- /wp:paragraph -->
+                    <!-- wp:paragraph -->
+                    <p>Building interactive prototypes to test and validate design decisions.</p>
+                    <!-- /wp:paragraph -->
+                </div>
+                <!-- /wp:group -->
             </div>
-            <!-- /wp:group -->
+            <!-- /wp:column -->
         </div>
-        <!-- /wp:column -->
+        <!-- /wp:columns -->
     </div>
-    <!-- /wp:columns -->
+    <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 ```
@@ -1075,9 +1092,11 @@ body.page-template-default .wp-site-blocks::before {
 
 ### Custom Block: Featured Project
 
-**Purpose:** Display a large asymmetric featured project on the homepage with full editorial control.
+**Purpose:** Display a featured project on the homepage with clean column layout and simple image treatment.
 
 **Location:** `blocks/featured-project/`
+
+**Design:** 7-5 column grid with content on left and a single clean image on right with hover effects.
 
 #### block.json
 ```json
@@ -1087,9 +1106,9 @@ body.page-template-default .wp-site-blocks::before {
   "name": "tcp/featured-project",
   "version": "1.0.0",
   "title": "Featured Project",
-  "category": "tcp-portfolio",
+  "category": "tc-projects",
   "icon": "star-filled",
-  "description": "Display a featured project with asymmetric layout",
+  "description": "Display a featured project with clean column layout",
   "supports": {
     "html": false,
     "align": ["wide", "full"]
@@ -1116,14 +1135,6 @@ body.page-template-default .wp-site-blocks::before {
       "default": ""
     },
     "imageMain": {
-      "type": "object",
-      "default": {
-        "url": "",
-        "alt": "",
-        "id": null
-      }
-    },
-    "imageSecondary": {
       "type": "object",
       "default": {
         "url": "",
@@ -1157,8 +1168,7 @@ export default function Edit({ attributes, setAttributes }) {
         description,
         buttonText,
         buttonLink,
-        imageMain,
-        imageSecondary
+        imageMain
     } = attributes;
 
     return (
@@ -1234,38 +1244,7 @@ export default function Edit({ attributes, setAttributes }) {
                                         {imageMain.url ? (
                                             <img src={imageMain.url} alt={imageMain.alt} />
                                         ) : (
-                                            __('Upload Main Image', 'tc-projects')
-                                        )}
-                                    </Button>
-                                )}
-                            />
-                        </MediaUploadCheck>
-                    </div>
-
-                    {/* Secondary Image */}
-                    <div className="featured-project-image-secondary">
-                        <MediaUploadCheck>
-                            <MediaUpload
-                                onSelect={(media) =>
-                                    setAttributes({
-                                        imageSecondary: {
-                                            url: media.url,
-                                            alt: media.alt,
-                                            id: media.id
-                                        }
-                                    })
-                                }
-                                allowedTypes={['image']}
-                                value={imageSecondary.id}
-                                render={({ open }) => (
-                                    <Button
-                                        onClick={open}
-                                        className={imageSecondary.url ? 'image-button' : 'button button-large'}
-                                    >
-                                        {imageSecondary.url ? (
-                                            <img src={imageSecondary.url} alt={imageSecondary.alt} />
-                                        ) : (
-                                            __('Upload Secondary Image', 'tc-projects')
+                                            __('Upload Image', 'tc-projects')
                                         )}
                                     </Button>
                                 )}
@@ -1294,8 +1273,7 @@ export default function save({ attributes }) {
         description,
         buttonText,
         buttonLink,
-        imageMain,
-        imageSecondary
+        imageMain
     } = attributes;
 
     return (
@@ -1330,12 +1308,6 @@ export default function save({ attributes }) {
                         <img src={imageMain.url} alt={imageMain.alt} />
                     </div>
                 )}
-
-                {imageSecondary.url && (
-                    <div className="featured-project-image-secondary">
-                        <img src={imageSecondary.url} alt={imageSecondary.alt} />
-                    </div>
-                )}
             </div>
         </div>
     );
@@ -1344,6 +1316,11 @@ export default function save({ attributes }) {
 
 #### style.css
 ```css
+/**
+ * Featured Project Block Styles
+ * Clean column layout with single image
+ */
+
 .featured-project-block {
     margin: 4rem 0;
 }
@@ -1351,21 +1328,16 @@ export default function save({ attributes }) {
 .featured-project-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(6, 120px);
-    gap: 1.5rem;
+    gap: 3rem;
+    align-items: center;
 }
 
+/* Content - 7 columns on left */
 .featured-project-content {
-    grid-column: 1 / 6;
-    grid-row: 2 / 5;
-    z-index: 2;
+    grid-column: 1 / 8;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    background-color: rgba(20, 20, 20, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
+    gap: 1.5rem;
 }
 
 .featured-project-category {
@@ -1373,368 +1345,201 @@ export default function save({ attributes }) {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: #10b981;
-    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .featured-project-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
     color: #ffffff;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.1;
+    margin: 0;
 }
 
 .featured-project-description {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     color: #9ca3af;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    font-weight: 300;
+    margin: 0;
 }
 
 .featured-project-button {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background-color: #10b981;
-    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 9999px;
+    color: #10b981;
     text-decoration: none;
-    border-radius: 0.375rem;
     font-weight: 500;
     transition: all 0.3s ease;
-    align-self: flex-start;
 }
 
 .featured-project-button:hover {
-    background-color: #14b8a6;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    background-color: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.5);
+    gap: 0.75rem;
 }
 
+/* Image - 5 columns on right */
 .featured-project-image-main {
-    grid-column: 6 / 13;
-    grid-row: 1 / 5;
+    grid-column: 8 / 13;
+    border-radius: 1rem;
     overflow: hidden;
-    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(20, 20, 20, 0.7);
+    transition: border-color 0.3s ease;
+}
+
+.featured-project-image-main:hover {
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 .featured-project-image-main img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 4/3;
     object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
 }
 
-.featured-project-image-secondary {
-    grid-column: 8 / 13;
-    grid-row: 4 / 7;
-    overflow: hidden;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.featured-project-image-main:hover img {
+    transform: scale(1.05);
 }
 
-.featured-project-image-secondary img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+/* Responsive */
 @media (max-width: 782px) {
     .featured-project-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 1rem;
+        gap: 2rem;
     }
 
     .featured-project-content,
-    .featured-project-image-main,
-    .featured-project-image-secondary {
+    .featured-project-image-main {
         grid-column: 1 / -1;
-        grid-row: auto;
-    }
-
-    .featured-project-image-main,
-    .featured-project-image-secondary {
-        min-height: 300px;
     }
 }
 ```
 
 #### editor.css
 ```css
+/**
+ * Editor Styles for Featured Project Block
+ */
+
+.featured-project-block {
+    padding: 2rem;
+    background-color: rgba(20, 20, 20, 0.3);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+}
+
 .featured-project-block .image-button {
-    width: 100%;
-    height: 100%;
     padding: 0;
     border: none;
     background: none;
+    display: block;
+    width: 100%;
 }
 
 .featured-project-block .image-button img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.5rem;
+    height: auto;
+    display: block;
 }
-
-.featured-project-block .button-large {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed rgba(255, 255, 255, 0.3);
-    border-radius: 0.5rem;
-    background-color: rgba(20, 20, 20, 0.5);
-    color: #9ca3af;
-}
-```
-
-#### index.js
-```javascript
-import { registerBlockType } from '@wordpress/blocks';
-import Edit from './edit';
-import save from './save';
-import metadata from './block.json';
-
-registerBlockType(metadata.name, {
-    edit: Edit,
-    save,
-});
 ```
 
 ---
 
 ## Implementation Steps
 
-### Phase 1: Core Theme Setup
+### Quick Start Guide
 
-1. **Create Theme Structure**
-   - Create all folders: templates, parts, patterns, assets, blocks
-   - Add style.css with theme headers
-   - Create functions.php
+1. **Set up the theme structure:**
+   ```bash
+   mkdir -p tc-projects/{templates,parts,patterns,assets/css,blocks/featured-project}
+   ```
 
-2. **Configure theme.json**
-   - Add color palette (emerald, teal, charcoal)
-   - Configure typography (Space Grotesk, Roboto Flex)
-   - Set spacing scale
-   - Configure global styles
+2. **Create core files:**
+   - Copy `style.css` header
+   - Create `theme.json` with full configuration
+   - Set up `functions.php` with hooks
+   - Add `custom-styles.css` to assets
 
-3. **Create Template Parts**
-   - Header with Site Tagline + Site Title navigation
-   - Footer with copyright and social links
-   - Background pattern (if using template part approach)
+3. **Build templates and parts:**
+   - Create all template files in `/templates`
+   - Create header and footer in `/parts`
+   - Add block patterns in `/patterns`
 
-4. **Create Templates**
-   - index.html (fallback)
-   - front-page.html (homepage)
-   - page.html (About page)
-   - single.html (project detail)
-   - home.html (projects archive)
+4. **Phase 2 (Optional - Custom Block):**
+   - Set up block directory structure
+   - Create `block.json`, `edit.js`, `save.js`
+   - Add block styles in `style.css`
+   - Register block in `functions.php`
 
-5. **Create Custom CSS**
-   - Background patterns (gradients + SVG grid)
-   - Block styles (stat-item, skill-card, tool-pill)
-   - Query loop project card styling
-   - Navigation customization
-   - Gallery grid for single posts
-   - Responsive adjustments
-
-6. **Create Block Patterns**
-   - Hero stats section (3-column with gradient underlines)
-   - Skills section (grid of cards)
-   - Additional patterns as needed
-
-7. **Test Core Functionality**
-   - Verify all templates render correctly
-   - Test patterns insertion
-   - Check responsive behavior
-   - Validate block styles are applied
-
-### Phase 2: Custom Block Development
-
-1. **Setup Block Development Environment**
-   - Install @wordpress/scripts: `npm install @wordpress/scripts --save-dev`
-   - Create package.json with build scripts
-   - Setup blocks directory structure
-
-2. **Build Featured Project Block**
-   - Create block.json
-   - Build edit.js (editor interface)
-   - Build save.js (frontend output)
-   - Style with style.css and editor.css
-   - Register in functions.php
-
-3. **Compile and Test**
-   - Run `npm run build`
-   - Test in block editor
-   - Verify frontend output
-   - Check responsive behavior
-
-4. **Enqueue Block Assets**
-   - Update functions.php to register and enqueue block
-
-### Phase 3: Content Setup
-
-1. **Create Navigation Menu**
-   - Add menu items: Home, About, Projects
-   - Assign to Navigation block in header
-
-2. **Create Sample Content**
-   - Homepage: Add hero pattern + featured project block + query loop
-   - About Page: Add bio, stats pattern, skills patterns, tools
-   - Projects: Create 6-9 sample posts with categories and tags
-
-3. **Configure Settings**
-   - Set static front page to homepage
-   - Configure permalink structure
-   - Set default post category
-
-4. **Final Testing**
-   - Test all page templates
-   - Verify navigation works
-   - Check all hover states and transitions
-   - Test responsive design on mobile/tablet
-   - Validate accessibility
+5. **Activate and configure:**
+   - Upload theme to WordPress
+   - Activate theme
+   - Set static front page
+   - Create navigation menu
+   - Insert patterns on homepage
 
 ---
 
 ## Code Reference
 
-### From React Implementation
+### Navigation Setup
 
-Reference the following components from your React implementation for visual accuracy:
+In WordPress admin, configure your site to display:
+- **Site Tagline:** "Troy Chaplin" (displays in white)
+- **Site Title:** "Portfolio" (displays in green via CSS)
 
-#### Background Patterns
-- **File:** `components/BackgroundPattern.tsx`
-- **Purpose:** SVG grid pattern with gradient blobs
-- **WordPress Implementation:** CSS in custom-styles.css using ::before and ::after pseudo-elements
+### Custom Fields for Projects
 
-#### Decorative Background (About Page)
-- **File:** `components/DecorativeBackground.tsx`
-- **Purpose:** Halftone gradient pattern
-- **WordPress Implementation:** CSS with page-specific class targeting
+For the single post template, you can add custom fields using:
+- ACF (Advanced Custom Fields)
+- CMB2
+- Or WordPress native custom fields
 
-#### Project Cards
-- **File:** `components/ProjectCard.tsx`
-- **Purpose:** Card with image, category, title, description, hover effects
-- **WordPress Implementation:** Query Loop styling in custom-styles.css
+Recommended fields:
+- **Role:** Text field
+- **Tools:** Taxonomy (post_tag)
+- **Project Link:** URL field
 
-#### Featured Project
-- **File:** `components/FeaturedProject.tsx` and `components/FeaturedProjectCard.tsx`
-- **Purpose:** Large asymmetric project display
-- **WordPress Implementation:** Custom block (blocks/featured-project/)
+### Menus
 
-#### Navigation
-- **File:** `components/Navigation.tsx`
-- **Purpose:** Header with logo and navigation links
-- **WordPress Implementation:** Template part (parts/header.html) with core blocks
-
-#### Stats Component (HomePage & AboutPage)
-- **Reference:** Stats section from `pages/HomePage.tsx` and `pages/AboutPage.tsx`
-- **Key Features:** Numbers with gradient underlines, Space Grotesk font
-- **WordPress Implementation:** Pattern (patterns/hero-stats.php) with custom block style
-
-#### Skills Cards (AboutPage)
-- **Reference:** Skills section from `pages/AboutPage.tsx`
-- **Key Features:** Grid of cards with hover effects, 70% opacity backgrounds
-- **WordPress Implementation:** Pattern (patterns/skills-section.php) with skill-card block style
-
-#### Tools Pills (AboutPage)
-- **Reference:** Tools section from `pages/AboutPage.tsx`
-- **Key Features:** Pill-style layout with green borders
-- **WordPress Implementation:** Group of paragraphs with tool-pill block style
-
-#### Project Page Layout
-- **Reference:** `pages/ProjectPage.tsx`
-- **Key Features:** Header, sidebar with role/tools, description, asymmetric gallery
-- **WordPress Implementation:** Template (templates/single.html) with custom CSS for gallery
+Create a navigation menu with:
+- Home
+- About
+- Projects (link to blog page)
 
 ---
 
-## Additional Notes
+## Summary
 
-### Google Fonts Loading
-The theme loads Google Fonts via functions.php to ensure fonts are available before page render, preventing flash of unstyled text (FOUT).
+This implementation plan provides a complete WordPress block theme that faithfully recreates your React portfolio design. **Phase 1** uses only WordPress core blocks, patterns, and CSS - no custom development required. **Phase 2** adds a custom Featured Project block for enhanced editorial control.
 
-### Custom Block Styles vs CSS Classes
-- **Block Styles:** Registered in functions.php, appear in block toolbar, semantic
-- **CSS Classes:** Added manually via Advanced > Additional CSS class(es), more flexible
-- **Recommendation:** Use block styles for repeatable components (stat-item, skill-card), CSS classes for one-off customizations
+The theme uses modern WordPress best practices:
+- ✅ Block theme architecture (theme.json)
+- ✅ Fluid typography and spacing
+- ✅ Custom block styles
+- ✅ Reusable block patterns
+- ✅ Semantic HTML
+- ✅ Accessibility-ready
+- ✅ Clean, maintainable code
 
-### Background Pattern Implementation
-The global background pattern is applied via CSS pseudo-elements on the body tag. This ensures it appears on all pages without needing to add template parts to every template.
+**Key Features:**
+- Dark theme with emerald/teal accents
+- Google Fonts (Space Grotesk + Roboto Flex)
+- SVG grid background pattern
+- Gradient stat underlines
+- 70% opacity skill cards
+- Asymmetric project galleries
+- Hover effects and transitions
+- Fully responsive design
+- Clean single image featured project layout
 
-### Query Loop Customization
-The project card styling in Query Loop is handled entirely via CSS targeting `.wp-block-post-template` and `.wp-block-post`. No custom PHP required.
-
-### Responsive Strategy
-- Mobile-first approach
-- Use CSS Grid with auto-fit/auto-fill for responsive grids
-- Breakpoint at 782px (WordPress standard)
-- Test on common devices: iPhone, iPad, desktop
-
-### Performance Considerations
-- Use WebP images when possible
-- Lazy load images (WordPress default)
-- Minify CSS in production
-- Consider caching plugin for production sites
-
-### Accessibility
-- Ensure proper heading hierarchy
-- Add ARIA labels where needed
-- Test keyboard navigation
-- Verify color contrast ratios (WCAG AA minimum)
-
----
-
-## Troubleshooting
-
-### Fonts Not Loading
-- Verify Google Fonts URL in functions.php
-- Check browser console for blocked requests
-- Clear WordPress cache
-
-### Block Styles Not Appearing
-- Ensure register_block_style() is hooked to 'init'
-- Clear browser cache
-- Check CSS file is enqueued
-
-### Custom Block Not Showing
-- Run `npm run build` to compile
-- Verify block is registered in functions.php
-- Check browser console for JavaScript errors
-
-### Gallery Grid Not Working
-- Ensure CSS is targeting `.single-post .wp-block-gallery`
-- Check that gallery is added to post content, not custom field
-- Verify grid CSS properties are not being overridden
-
----
-
-## Future Enhancements
-
-### Potential Additions
-1. **Custom Post Type for Projects** - More control than regular posts
-2. **ACF Integration** - For Role field and additional custom fields
-3. **Animation Library** - Scroll-triggered animations for stats/cards
-4. **Dark Mode Toggle** - Optional light mode
-5. **Advanced Gallery Block** - Custom block for more control over layout
-6. **Contact Form Block** - Custom block with modern styling
-7. **Testimonials Pattern** - Repeatable testimonial cards
-8. **Filter Controls** - Category/tag filters for projects archive
-
-### Recommended Plugins
-- **Advanced Custom Fields (ACF)** - For custom fields like "Role"
-- **WP Migrate** - For moving site between environments
-- **Query Monitor** - For debugging during development
-- **Yoast SEO** - For SEO optimization
-
----
-
-## Conclusion
-
-This implementation plan provides a complete roadmap for converting the React portfolio into a WordPress block theme. The design maintains all visual characteristics while leveraging WordPress's native block system for maximum flexibility and ease of content management.
-
-The two-phase approach allows you to:
-1. Build the core theme foundation with patterns and custom CSS
-2. Add custom blocks only where necessary for complex layouts
-
-This strategy minimizes custom code while maximizing the use of WordPress core functionality, resulting in a maintainable, performant, and user-friendly theme.
+The theme is ready for WordPress 6.4+ and follows all modern development standards.
