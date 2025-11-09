@@ -1,8 +1,6 @@
 # WordPress Block Theme Implementation Plan
 ## TC Projects Theme
 
----
-
 ## Table of Contents
 1. [Theme Overview](#theme-overview)
 2. [Design System](#design-system)
