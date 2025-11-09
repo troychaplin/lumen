@@ -33,7 +33,7 @@
 - **Homepage (Front Page):** Custom front-page.html template
 - **About Page:** Default page.html template
 - **Projects (Blog Posts):** Default single.html template
-- **Projects Archive:** Default home.html template
+- **Projects Archive:** Default index.html template
 
 ---
 
@@ -68,7 +68,7 @@
 ## File Structure
 
 ```
-troy-chaplin-portfolio/
+tc-projects/
 ├── style.css
 ├── theme.json
 ├── functions.php
@@ -108,7 +108,7 @@ troy-chaplin-portfolio/
 
 ```css
 /*
-Theme Name: Troy Chaplin Portfolio
+Theme Name: TC Projects
 Theme URI: https://troychaplin.com
 Author: Troy Chaplin
 Author URI: https://troychaplin.com
@@ -119,7 +119,7 @@ Tested up to: 6.5
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: troy-chaplin-portfolio
+Text Domain: tc-projects
 */
 ```
 
@@ -374,7 +374,7 @@ add_action('wp_enqueue_scripts', 'tcp_enqueue_custom_styles');
 function tcp_register_block_patterns_category() {
     register_block_pattern_category(
         'tcp-portfolio',
-        array('label' => __('Portfolio Sections', 'troy-chaplin-portfolio'))
+        array('label' => __('Portfolio Sections', 'tc-projects'))
     );
 }
 add_action('init', 'tcp_register_block_patterns_category');
@@ -388,7 +388,7 @@ function tcp_register_block_styles() {
         'core/group',
         array(
             'name'  => 'stat-item',
-            'label' => __('Stat Item', 'troy-chaplin-portfolio'),
+            'label' => __('Stat Item', 'tc-projects'),
         )
     );
     
@@ -397,7 +397,7 @@ function tcp_register_block_styles() {
         'core/group',
         array(
             'name'  => 'skill-card',
-            'label' => __('Skill Card', 'troy-chaplin-portfolio'),
+            'label' => __('Skill Card', 'tc-projects'),
         )
     );
     
@@ -406,7 +406,7 @@ function tcp_register_block_styles() {
         'core/paragraph',
         array(
             'name'  => 'tool-pill',
-            'label' => __('Tool Pill', 'troy-chaplin-portfolio'),
+            'label' => __('Tool Pill', 'tc-projects'),
         )
     );
 }
@@ -1133,7 +1133,7 @@ body.page-template-default .wp-site-blocks::before {
       }
     }
   },
-  "textdomain": "troy-chaplin-portfolio",
+  "textdomain": "tc-projects",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css"
@@ -1165,14 +1165,14 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Button Settings', 'troy-chaplin-portfolio')}>
+                <PanelBody title={__('Button Settings', 'tc-projects')}>
                     <TextControl
-                        label={__('Button Text', 'troy-chaplin-portfolio')}
+                        label={__('Button Text', 'tc-projects')}
                         value={buttonText}
                         onChange={(value) => setAttributes({ buttonText: value })}
                     />
                     <URLInput
-                        label={__('Button Link', 'troy-chaplin-portfolio')}
+                        label={__('Button Link', 'tc-projects')}
                         value={buttonLink}
                         onChange={(value) => setAttributes({ buttonLink: value })}
                     />
@@ -1188,7 +1188,7 @@ export default function Edit({ attributes, setAttributes }) {
                             className="featured-project-category"
                             value={category}
                             onChange={(value) => setAttributes({ category: value })}
-                            placeholder={__('Category', 'troy-chaplin-portfolio')}
+                            placeholder={__('Category', 'tc-projects')}
                         />
                         
                         <RichText
@@ -1196,7 +1196,7 @@ export default function Edit({ attributes, setAttributes }) {
                             className="featured-project-title"
                             value={title}
                             onChange={(value) => setAttributes({ title: value })}
-                            placeholder={__('Project Title', 'troy-chaplin-portfolio')}
+                            placeholder={__('Project Title', 'tc-projects')}
                         />
                         
                         <RichText
@@ -1204,7 +1204,7 @@ export default function Edit({ attributes, setAttributes }) {
                             className="featured-project-description"
                             value={description}
                             onChange={(value) => setAttributes({ description: value })}
-                            placeholder={__('Project description...', 'troy-chaplin-portfolio')}
+                            placeholder={__('Project description...', 'tc-projects')}
                         />
                         
                         <div className="featured-project-button">
@@ -1235,7 +1235,7 @@ export default function Edit({ attributes, setAttributes }) {
                                         {imageMain.url ? (
                                             <img src={imageMain.url} alt={imageMain.alt} />
                                         ) : (
-                                            __('Upload Main Image', 'troy-chaplin-portfolio')
+                                            __('Upload Main Image', 'tc-projects')
                                         )}
                                     </Button>
                                 )}
@@ -1266,7 +1266,7 @@ export default function Edit({ attributes, setAttributes }) {
                                         {imageSecondary.url ? (
                                             <img src={imageSecondary.url} alt={imageSecondary.alt} />
                                         ) : (
-                                            __('Upload Secondary Image', 'troy-chaplin-portfolio')
+                                            __('Upload Secondary Image', 'tc-projects')
                                         )}
                                     </Button>
                                 )}
