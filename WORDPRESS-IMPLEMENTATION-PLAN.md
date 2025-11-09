@@ -1,7 +1,6 @@
 # WordPress Block Theme Implementation Plan
-## Troy Chaplin Portfolio Theme
 
----
+## TC Projects Theme
 
 ## Table of Contents
 1. [Theme Overview](#theme-overview)
