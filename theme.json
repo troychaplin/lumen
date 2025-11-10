@@ -6,13 +6,23 @@
 			"palette": [
 				{
 					"color": "#090909",
-					"name": "Charcoal Dark",
-					"slug": "charcoal-dark"
+					"name": "Dark One",
+					"slug": "dark-one"
 				},
 				{
-					"color": "#262626",
-					"name": "Charcoal",
-					"slug": "charcoal"
+					"color": "#3d3d3d",
+					"name": "Dark Two",
+					"slug": "dark-two"
+				},
+				{
+					"color": "#454545",
+					"name": "Dark Three",
+					"slug": "dark-three"
+				},
+				{
+					"color": "#4f4f4f",
+					"name": "Dark Four",
+					"slug": "dark-four"
 				},
 				{
 					"color": "#10b981",
@@ -56,7 +66,7 @@
 			"wideSize": "976px"
 		},
 		"spacing": {
-            "customSpacingSize": false,
+			"customSpacingSize": false,
 			"defaultSpacingSizes": false,
 			"spacingSizes": [
 				{
@@ -92,7 +102,7 @@
 						"min": "1.5rem"
 					},
 					"name": "Large",
-					"size": "clamp(1.5rem, 1.25rem + 2.5cqi, 2rem)",
+					"size": "2rem",
 					"slug": "lg"
 				},
 				{
@@ -281,7 +291,7 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--charcoal-dark)",
+			"background": "var(--wp--preset--color--dark-one)",
 			"text": "var(--wp--preset--color--white)"
 		},
 		"elements": {

@@ -4,7 +4,7 @@
 
 /* Background Gradient */
 html::before {
-    --translate-x: -5%;
+    --translate-x: -20%;
     --translate-y: -20%;
     --rotate: -25deg;
     
@@ -21,6 +21,12 @@ html::before {
     transform-origin: top right;
     pointer-events: none;
     z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    html::before {
+        --translate-x: -5%;
+    }
 }
 
 @media (max-width: 782px) {
@@ -76,6 +82,10 @@ header.is-position-sticky {
     backdrop-filter: blur(8px) saturate(180%);
     -webkit-backdrop-filter: blur(8px) saturate(180%);
 }
+
+/* .wp-block-navigation__responsive-container.is-menu-open.is-menu-open {
+    height: 100vh;
+} */
 
 /* ===========================
    Stat Item with Gradient Underline
