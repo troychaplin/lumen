@@ -1,1 +1,1 @@
-# TC Projects: WordPress Block Theme
+# Lumen: A WordPress Block Theme

@@ -19,7 +19,7 @@ add_action( 'after_setup_theme', 'tc_projects_add_editor_styles' );
  */
 function tc_projects_enqueue_styles() {
 	wp_enqueue_style(
-		'tc-projects-custom-styles',
+		'lumen-custom-styles',
 		get_template_directory_uri() . '/assets/css/custom-styles.css',
 		array(),
 		wp_get_theme()->get( 'Version' )
@@ -32,8 +32,8 @@ add_action( 'wp_enqueue_scripts', 'tc_projects_enqueue_styles' );
  */
 function tc_projects_register_pattern_categories() {
 	register_block_pattern_category(
-		'tc-projects',
-		array( 'label' => __( 'TC Projects', 'tc-projects' ) )
+		'lumen',
+		array( 'label' => __( 'TC Projects', 'lumen' ) )
 	);
 }
 add_action( 'init', 'tc_projects_register_pattern_categories' );
@@ -47,7 +47,7 @@ function tc_projects_register_block_styles() {
 		'core/group',
 		array(
 			'name'  => 'stat-item',
-			'label' => __( 'Stat Item', 'tc-projects' ),
+			'label' => __( 'Stat Item', 'lumen' ),
 		)
 	);
 	
@@ -56,7 +56,7 @@ function tc_projects_register_block_styles() {
 		'core/group',
 		array(
 			'name'  => 'skill-card',
-			'label' => __( 'Skill Card', 'tc-projects' ),
+			'label' => __( 'Skill Card', 'lumen' ),
 		)
 	);
 	
@@ -65,7 +65,7 @@ function tc_projects_register_block_styles() {
 		'core/paragraph',
 		array(
 			'name'  => 'tool-pill',
-			'label' => __( 'Tool Pill', 'tc-projects' ),
+			'label' => __( 'Tool Pill', 'lumen' ),
 		)
 	);
 }
