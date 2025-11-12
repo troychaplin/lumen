@@ -44,28 +44,10 @@ add_action( 'init', 'tc_projects_register_pattern_categories' );
 function tc_projects_register_block_styles() {
 	// Stat item with gradient underline
 	register_block_style(
-		'core/group',
+		'core/tag-cloud',
 		array(
-			'name'  => 'stat-item',
-			'label' => __( 'Stat Item', 'lumen' ),
-		)
-	);
-	
-	// Skill card style
-	register_block_style(
-		'core/group',
-		array(
-			'name'  => 'skill-card',
-			'label' => __( 'Skill Card', 'lumen' ),
-		)
-	);
-	
-	// Tool pill style
-	register_block_style(
-		'core/paragraph',
-		array(
-			'name'  => 'tool-pill',
-			'label' => __( 'Tool Pill', 'lumen' ),
+			'name'  => 'button-style',
+			'label' => __( 'Button Style', 'lumen' ),
 		)
 	);
 }

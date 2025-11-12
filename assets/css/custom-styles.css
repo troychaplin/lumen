@@ -88,12 +88,30 @@ header.is-position-sticky {
 } */
 
 /* ===========================
-   Stat Item with Gradient Underline
-   =========================== */
-/* .is-style-stat-item {
-    position: relative;
-    padding-bottom: 1rem;
+Stat Item with Gradient Underline
+=========================== */
+
+.is-style-button-style {
+    display: flex;
+    gap: var(--wp--preset--spacing--xs);
+    flex-wrap: wrap;
 }
+
+.is-style-button-style .tag-cloud-link {
+    padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--sm);
+    background-color: var(--wp--preset--color--black-25);
+    border: 1px solid var(--wp--preset--color--white-10);
+    color: var(--wp--preset--color--gray-300);
+    border-radius: 8px;
+}
+
+.is-style-button-style .tag-cloud-link:hover {
+    background-color: var(--wp--preset--color--black-80);
+    border-color: var(--wp--preset--color--emerald);
+    color: var(--wp--preset--color--emerald);
+}
+
+/* 
 
 .is-style-stat-item::after {
     content: '';
